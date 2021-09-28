@@ -41,3 +41,17 @@ function testBinarySearch(sorted){
 
 testBinarySearch([1,1,5,5,7,8,9,100])
 
+const insertionSort = require('./insertionSort.js')
+
+function testInsertionSort(unsorted){
+    let sorted = [...unsorted].sort()
+    insertionSort(unsorted)
+    console.assert(
+        compareArrays(sorted, unsorted), 
+        `[${arguments.callee.name}] arrays are not equal`
+    )
+}
+
+testInsertionSort([8,2,5,1,7,4,6,9,3])
+
+//TODO test on different sizes of arrays?
