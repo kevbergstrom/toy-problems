@@ -9,7 +9,7 @@ function compareArrays(a, b){
 const bubbleSort = require('./bubbleSort.js')
 
 function testBubbleSort(unsorted){
-    let sorted = [...unsorted].sort()
+    let sorted = [...unsorted].sort((a,b) => a-b)
     bubbleSort(unsorted)
     console.assert(
         compareArrays(sorted, unsorted), 
@@ -40,11 +40,12 @@ function testBinarySearch(sorted){
 }
 
 testBinarySearch([1,1,5,5,7,8,9,100])
+testBinarySearch([1,1,5,5,7,8,9,100,200])
 
 const insertionSort = require('./insertionSort.js')
 
 function testInsertionSort(unsorted){
-    let sorted = [...unsorted].sort()
+    let sorted = [...unsorted].sort((a,b) => a-b)
     insertionSort(unsorted)
     console.assert(
         compareArrays(sorted, unsorted), 
@@ -53,5 +54,20 @@ function testInsertionSort(unsorted){
 }
 
 testInsertionSort([8,2,5,1,7,4,6,9,3])
+testInsertionSort([8,2,5,1,7,4,6,9,3,10])
+
+const mergeSort = require('./mergeSort.js')
+
+function testMergeSort(unsorted){
+    let sorted = [...unsorted].sort((a,b) => a-b)
+    mergeSort(unsorted)
+    console.assert(
+        compareArrays(sorted, unsorted), 
+        `[${arguments.callee.name}] arrays are not equal`
+    )
+}
+
+testMergeSort([8,2,5,1,7,4,6,9,3])
+testMergeSort([8,2,5,1,7,4,6,9,3,10])
 
 //TODO test on different sizes of arrays?
