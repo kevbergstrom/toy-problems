@@ -18,6 +18,8 @@ function testBubbleSort(unsorted){
 }
 
 testBubbleSort([8,2,5,1,7,4,6,9,3])
+testBubbleSort([1])
+testBubbleSort([])
 
 const binarySearch = require('./binarySearch.js')
 
@@ -41,6 +43,8 @@ function testBinarySearch(sorted){
 
 testBinarySearch([1,1,5,5,7,8,9,100])
 testBinarySearch([1,1,5,5,7,8,9,100,200])
+testBinarySearch([1])
+testBinarySearch([])
 
 const insertionSort = require('./insertionSort.js')
 
@@ -55,6 +59,8 @@ function testInsertionSort(unsorted){
 
 testInsertionSort([8,2,5,1,7,4,6,9,3])
 testInsertionSort([8,2,5,1,7,4,6,9,3,10])
+testInsertionSort([1])
+testInsertionSort([])
 
 const mergeSort = require('./mergeSort.js')
 
@@ -69,5 +75,23 @@ function testMergeSort(unsorted){
 
 testMergeSort([8,2,5,1,7,4,6,9,3])
 testMergeSort([8,2,5,1,7,4,6,9,3,10])
+testMergeSort([1])
+testMergeSort([])
+
+const quickSort = require('./quickSort.js')
+
+function testQuickSort(unsorted){
+    let sorted = [...unsorted].sort((a,b) => a-b)
+    unsorted = quickSort(unsorted)
+    console.assert(
+        compareArrays(sorted, unsorted), 
+        `[${arguments.callee.name}] arrays are not equal`
+    )
+}
+
+testQuickSort([8,2,5,1,7,4,6,9,3])
+testQuickSort([8,2,5,1,7,4,6,9,3,10])
+testQuickSort([1])
+testQuickSort([])
 
 //TODO test on different sizes of arrays?
