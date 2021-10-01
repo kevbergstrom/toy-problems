@@ -94,4 +94,20 @@ testQuickSort([8,2,5,1,7,4,6,9,3,10])
 testQuickSort([1])
 testQuickSort([])
 
+const heapSort = require('./heapSort.js')
+
+function testHeapSort(unsorted){
+    let sorted = [...unsorted].sort((a,b) => a-b)
+    heapSort(unsorted)
+    console.assert(
+        compareArrays(sorted, unsorted), 
+        `[${arguments.callee.name}] arrays are not equal`
+    )
+}
+
+testHeapSort([8,2,5,1,7,4,6,9,3])
+testHeapSort([8,2,5,1,7,4,6,9,3,10])
+testHeapSort([1])
+testHeapSort([])
+
 //TODO test on different sizes of arrays?
